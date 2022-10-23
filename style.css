@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --content-font: 'Work Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #343238;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--content-font);
+}
+
+button {
+    padding: 11px 22px;
+    background-color: #2b5b84;
+    color: #e6e8ea;
+    font-family: var(--content-font);
+    font-size: 16px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.modal-body {
+    background-color: #343239;
+    color: #fff;
+    width: 320px;
+    position: fixed;
+    padding: 44px 40px;
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 9px;
+    transform: translate(-50% -50%);
+    transition: 0.5s;
+}
+
+.modal-body h2 {
+    letter-spacing: 2px;
+    padding: 7px 0;
+}
+
+.modal-background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(1, 1);
+    transition: 0.5s;
+}
+
+body.open .modal-background {
+    visibility: visible;
+    opacity: 1;
+    animation: background-in 500ms both;
+}
+
+@keyframes background-in {
+
+    0% {
+        transform: scale(0 0.5);
+    }
+
+    30% {
+        transform: scale(1 0.5);
+    }
+
+    60%,
+    100% {
+        transform: scale(1 1);
+    }
+}
+
+body.open .modal-body {
+    visibility: visible;
+    opacity: 1;
+    animation: modal-in 500ms;
+}
+
+@keyframes modal-in {
+
+    0%,
+    60% {
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(-50% -25%);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+body.closed.modal-body {
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50% -50%);
+}
